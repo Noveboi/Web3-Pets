@@ -46,7 +46,10 @@ contract Pets {
 
     /// Update the name of a pet in this contract
     function updateName(uint256 chipId, string memory newName) petExists(chipId) public {
+        require(bytes(newName).length > 0, "Name cannot be empty");
 
+        Pet storage pet = pets[chipId];
+        pet.name = newName;
     }
 
     /// Increment the age of a pet by 1 year
