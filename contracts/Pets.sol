@@ -2,11 +2,17 @@
 pragma solidity >=0.8.0 <0.9.0;
 
 contract Pets {
+    /// A value object describing the pet's status in the contract.
+    struct PetStatus {
+        bool isActive;
+        string deactivationReason;
+    }
+
     struct Pet {
         string name;
         string kind;
         int age;
-        bool isActive;
+        PetStatus status;
     }
 
     // Contract data
@@ -45,12 +51,16 @@ contract Pets {
     }
 
     /// Set a pet's status to "Inactive" 
-    function softDelete(uint256 chipId) petExists(chipId) public {
-
+    /// NOTE: The pet is not permanantely deleted from the contract's storage. Anyone can still retrieve a
+    /// "soft-deleted" or "inactive" pet.
+    function softDelete(uint256 chipId, string memory reason) petExists(chipId) public {
+        Pet storage pet = pets[chipId];
+        pet.status.isActive = false;
+        pet.status.deactivationReason = reason;
     }
 
     /// Retrieve a pet by its chip ID
     function get(uint256 chipId) petExists(chipId) public view returns (Pet memory) {
-
+        return pets[chipId];
     }
 }
