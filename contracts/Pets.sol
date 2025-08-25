@@ -6,12 +6,15 @@ contract Pets {
     struct PetStatus {
         bool isActive;
         string deactivationReason;
+        uint modifiedAt;
     }
 
     struct Pet {
         string name;
         string kind;
-        int age;
+        uint8 age;
+        uint createdAt;
+        uint modifiedAt;
         PetStatus status;
     }
 
@@ -30,13 +33,14 @@ contract Pets {
         _;
     }
 
-    modifier validAge(uint16 age) {
-        require(age >= 0, "Invalid age");
+    modifier validAge(uint8 age) {
+        require(age >= 0, "Age must be greater than or equal to 0");
+        require(age < 255, "Age must be less than or equal to 255");
         _;
     }
 
     /// Add a new pet to this contract
-    function add(uint256 chipId, string memory name, string memory kind, uint16 age) petDoesNotExist(chipId) validAge(age) public {
+    function add(uint256 chipId, string memory name, string memory kind, uint8 age) petDoesNotExist(chipId) validAge(age) public {
 
     }
 
@@ -47,7 +51,11 @@ contract Pets {
 
     /// Increment the age of a pet by 1 year
     function incrementAge(uint256 chipId) petExists(chipId) public {
+        Pet storage pet = pets[chipId];
+        
+        require(pet.age < 255, "Pet's age has reached the maximum allowed value");
 
+        pet.age++;
     }
 
     /// Set a pet's status to "Inactive" 
