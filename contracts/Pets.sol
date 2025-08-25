@@ -41,7 +41,20 @@ contract Pets {
 
     /// Add a new pet to this contract
     function add(uint256 chipId, string memory name, string memory kind, uint8 age) petDoesNotExist(chipId) validAge(age) public {
+        require(bytes(name).length > 0, "Name cannot be empty");
+        require(bytes(kind).length > 0, "Kind cannot be empty");
 
+        pets[chipId] = Pet({
+            name: name, 
+            kind: kind, 
+            age: age,
+            createdAt: block.timestamp,
+            modifiedAt: 0,
+            status: PetStatus({
+                isActive: true,
+                deactivationReason: "",
+                modifiedAt: 0
+            })});
     }
 
     /// Update the name of a pet in this contract
