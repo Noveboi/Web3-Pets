@@ -56,6 +56,7 @@ contract Pets {
         require(pet.age < 255, "Pet's age has reached the maximum allowed value");
 
         pet.age++;
+        pet.modifiedAt = block.timestamp;
     }
 
     /// Set a pet's status to "Inactive" 
@@ -63,8 +64,13 @@ contract Pets {
     /// "soft-deleted" or "inactive" pet.
     function softDelete(uint256 chipId, string memory reason) petExists(chipId) public {
         Pet storage pet = pets[chipId];
+
         pet.status.isActive = false;
         pet.status.deactivationReason = reason;
+
+        uint ts = block.timestamp;
+        pet.modifiedAt = ts;
+        pet.status.modifiedAt = ts;
     }
 
     /// Retrieve a pet by its chip ID
