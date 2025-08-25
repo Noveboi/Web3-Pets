@@ -33,16 +33,12 @@ contract Pets {
         _;
     }
 
-    modifier validAge(uint8 age) {
-        require(age >= 0, "Age must be greater than or equal to 0");
-        require(age < 255, "Age must be less than or equal to 255");
-        _;
-    }
-
     /// Add a new pet to this contract
-    function add(uint256 chipId, string memory name, string memory kind, uint8 age) petDoesNotExist(chipId) validAge(age) public {
+    function add(uint256 chipId, string memory name, string memory kind, uint8 age) petDoesNotExist(chipId) public {
         require(bytes(name).length > 0, "Name cannot be empty");
         require(bytes(kind).length > 0, "Kind cannot be empty");
+        require(age >= 0, "Age must be greater than or equal to 0");
+        require(age < 255, "Age must be less than or equal to 255");
 
         pets[chipId] = Pet({
             name: name, 
@@ -55,6 +51,8 @@ contract Pets {
                 deactivationReason: "",
                 modifiedAt: 0
             })});
+
+        existingPets[chipId] = true;
     }
 
     /// Update the name of a pet in this contract
