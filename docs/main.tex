@@ -70,6 +70,13 @@
 \end{itemize}
 
 \subsubsection{Μεταβλητές Κατάστασης (State Variables)}
+Για την αποθήκη των δεδομένων των κατοικιδίων χρησιμοποιούνται δύο state variables:
 
+\begin{itemize}
+    \item \textbf{pets}: Είναι ένας πίνακας κατακερματισμού (hash table) με κλειδί το μοναδικό κωδικό chip (Chip ID) και τιμή ένα κατοικίδιο. Αποτελεί τη μεταβλητή στην οποιά αποθηκεύονται όλα τα δεδομένα των κατοικιδίων που εισάγωγονται/ενημερώνονται.\
+    \item \textbf{existingPets}: Βοηθητικός πίνακας κατακερματισμού για να αναγνωρίζει το συμβόλαιο αν κάποιο κατοικίδιο είναι καταχωριμένο στο δεδομένα του. Η ανάγκη για αυτή τη μεταβλητή υπάρχει λόγω της ειδικής υλοποιήσης του πίνακα κατακερματισμού από τη Solidity. Στο  \href{https://docs.soliditylang.org/en/v0.8.30/types.html#mapping-types}{documentation της γλώσσας}, αναγράφεται ότι: \begin{quote}
+        You can think of mappings as hash tables, which are virtually initialised such that every possible key exists and is mapped to a value whose byte-representation is all zeros, a type’s default value... Because of this, mappings do not have a length or a concept of a key or value being set, and therefore cannot be erased without extra information regarding the assigned keys
+    \end{quote}
+\end{itemize}
 
 \end{document}
