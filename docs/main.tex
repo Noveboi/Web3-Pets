@@ -1,0 +1,75 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{listings}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{polyglossia}
+
+\setdefaultlanguage{greek}
+\setotherlanguage{english}
+\setmainfont{Times New Roman}
+\newfontfamily\greekfont{Times New Roman}
+\newfontfamily\englishfont{Times New Roman}
+
+\setlength{\headheight}{15pt}
+
+\geometry{margin=2.5cm}
+\doublespacing
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\thepage}
+\fancyhead[L]{Έξυπνο Συμβόλαιο Διαχείρισης Στοιχείων Κατοικιδίων}
+
+
+\begin{document}
+
+\include{solidity_listings}
+
+\begin{titlepage}
+    \centering
+    \vspace*{2cm}
+    
+    {\huge\textbf{Έξυπνο Συμβόλαιο Διαχείρισης Στοιχείων Κατοικιδίων}}\\
+    \vspace{2cm}
+    {\large Προγραμματιστική Εργασία Solidity (2025)}
+    \vspace{3cm}
+    
+    {\large\ \textbf{Μάθημα:} Τεχνολογίες Blockchain \& Εφαρμογές}\\
+    {\large\ \textbf{Καθηγήτρια:} Δρ. Αριστέα Κοντογιάννη}\\
+    \vspace{2cm}
+    
+    {\large Γιώργος Νικολαΐδης (π21115)}\\
+\end{titlepage}
+
+% - Η εργασια εμπεριέχει ένα αρχείο κώδικα Solidity 
+% - Στο κώδικα ορίζεται ένα εξυπνο συμβόλαιο "Pets"
+% - Το "Pets" contract καθορίζει 5 μεθόδους, μια για κάθε λειτουργία της εκφώνησης
+\section{Εισαγωγή}
+Η παρούσα εργασία εμπεριέχει ένα αρχείο κώδικο Solidity που ορίζεται ένα έξυπνο συμβόλαιο ονόματι "\textbf{Pets}". Το συμβόλαιο καθορίζει πέντε μεθόδους (functions), η κάθε μέθοδος υλοποιεί μια λειτουργία που ορίζει η εκφώνηση. 
+
+Στις δύο ενότητες που ακολουθούν, θα αναλυθεί περαιτέρω ο κώδικας και θα φανεί σε πράξη η λειτουργία του έξυπνου συμβόλαιου.
+
+\newpage
+
+\section{Ανάλυση Κώδικα}
+
+\subsection{Ο Κώδικας}
+\lstinputlisting[language=Solidity]{../contracts/Pets.sol}
+
+\subsection{Τα Μέρη του Συμβολαίου}
+Το συμβόλαιο εσωτερικά είναι χωρισμένο σε διάφορα μέρη.
+
+\subsubsection{Ορισμός Δομών Δεδομένων}
+Στο συμβόλαιο γίνεται η χρήση ειδικών δομών δεδομένων (struct) για να επιτευχθεί η ορθή και ξεκάθαρη μοντελοποίηση του προβλήματος.
+
+\begin{itemize}
+    \item \textbf{Pet}: Μοντελοποιεί τις ιδιότητες ενός κατοικιδίου, όπως ορίζεται στην εκφώνηση της εργασίας. Δεν έχει πεδίο για τον μοναδικό κωδικό chip (Chip ID), η ταυτοποίηση με τον κωδικό γίνεται σε σημείο που θα δούμε αμέσως μέτα. Αξίζει να σημειωθεί η παρουσία των ιδιοτήτων \textbf{createdAt} και \textbf{modifiedAt}, η οποίες υπάρχουν για λόγους auditing - να μπορεί οποιοσδήποτε να δεί πότε δημιουργήθηκε/ενημερώθηκε ένα κατοικίδιο.
+    
+    \item \textbf{PetStatus}: Παρέχει πληροφορίες για την κατάσταση του κατοικιδίου - αν είναι ενεργό στο σύστημα και μια αιτιόλογηση για αν δεν είναι.
+\end{itemize}
+
+\subsubsection{Μεταβλητές Κατάστασης (State Variables)}
+
+
+\end{document}
