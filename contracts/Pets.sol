@@ -2,7 +2,6 @@
 pragma solidity >=0.8.0 <0.9.0;
 
 contract Pets {
-
     /// A value object describing the pet's status in the contract.
     struct PetStatus {
         bool isActive;
