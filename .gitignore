@@ -13,3 +13,41 @@ states/
 # Optional
 .env
 .env.local
+
+# LaTeX build files
+*.aux
+*.bbl
+*.blg
+*.brf
+*.idx
+*.ilg
+*.ind
+*.lof
+*.lot
+*.out
+*.toc
+*.acn
+*.acr
+*.alg
+*.glg
+*.glo
+*.gls
+*.ist
+*.fls
+*.log
+*.fdb_latexmk
+*.synctex.gz
+*.synctex(busy)
+*.xdv
+
+# Intermediate files
+*.nav
+*.snm
+*.vrb
+*.dvi
+*.ps
+*.eps
+*.run.xml
+
+# PDF/compiled outputs (optional: ignore if you don’t want built PDFs in repo)
+*.pdf
