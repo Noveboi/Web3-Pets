@@ -1,0 +1,46 @@
+% Define colors
+\definecolor{solidityKeyword}{rgb}{0.0,0.2,0.6}   % dark blue
+\definecolor{solidityType}{rgb}{0.6,0.1,0.6}      % purple
+\definecolor{solidityComment}{rgb}{0.25,0.5,0.35} % green
+\definecolor{solidityString}{rgb}{0.6,0.2,0.2}    % reddish
+
+% Fix for monospace fonts in Greek/English
+\newfontfamily\greekfonttt{Courier New}
+\newfontfamily\englishfonttt{Courier New}
+
+% Define Solidity language
+\lstdefinelanguage{Solidity}{
+  keywords={
+    contract,library,interface,struct,event,enum,function,modifier,
+    constructor,fallback,receive,returns,import,pragma,storage,memory,calldata,
+    if,else,for,while,do,break,continue,return,emit,revert,require,assert,new,
+    mapping,this,super,delete,using,as,assembly
+  },
+  keywordstyle=\color{solidityKeyword}\bfseries,
+  ndkeywords={address,bool,string,bytes,int,uint,int8,uint8,int16,uint16,
+    int32,uint32,int64,uint64,int128,uint128,int256,uint256,byte,ufixed,fixed},
+  ndkeywordstyle=\color{solidityType}\bfseries,
+  sensitive=true,
+  comment=[l]{//},
+  commentstyle=\color{solidityComment}\ttfamily,
+  morecomment=[s]{/*}{*/},
+  stringstyle=\color{solidityString}\ttfamily,
+  morestring=[b]",
+  morestring=[b]'
+}
+
+% Default style
+\lstset{
+  language=Solidity,
+  basicstyle=\ttfamily\footnotesize,
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  stepnumber=1,
+  numbersep=5pt,
+  showstringspaces=false,
+  tabsize=2,
+  breaklines=true,
+  frame=single,
+  rulecolor=\color{black!30},
+  captionpos=b
+}
