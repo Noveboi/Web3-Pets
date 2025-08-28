@@ -62,6 +62,7 @@ contract Pets {
 
         Pet storage pet = pets[chipId];
         pet.name = newName;
+        pet.modifiedAt = block.timestamp;
     }
 
     /// Increment the age of a pet by 1 year
