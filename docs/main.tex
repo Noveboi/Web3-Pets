@@ -3,6 +3,7 @@
 \usepackage{geometry}
 \usepackage{setspace}
 \usepackage{fancyhdr}
+\usepackage{graphicx}
 \usepackage{xcolor}
 \usepackage{polyglossia}
 \usepackage{hyperref}
@@ -46,9 +47,6 @@
 \tableofcontents
 \newpage
 
-% - Η εργασια εμπεριέχει ένα αρχείο κώδικα Solidity 
-% - Στο κώδικα ορίζεται ένα εξυπνο συμβόλαιο "Pets"
-% - Το "Pets" contract καθορίζει 5 μεθόδους, μια για κάθε λειτουργία της εκφώνησης
 \section{Εισαγωγή}
 Η παρούσα εργασία εμπεριέχει ένα αρχείο κώδικο Solidity που ορίζεται ένα έξυπνο συμβόλαιο ονόματι "\textbf{Pets}". Το συμβόλαιο καθορίζει πέντε μεθόδους (functions), η κάθε μέθοδος υλοποιεί μια λειτουργία που ορίζει η εκφώνηση. 
 
@@ -126,5 +124,35 @@
 \end{itemize}
 
 \section{Στιγμιότυπα Οθόνης}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{img/compile.jpg}
+    \caption{Επιτυχής μεταγλώττιση του συμβολαίου}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{img/deploy.jpg}
+    \caption{Επιτυχής δημιουργία (deployment) του συμβολαίου}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{img/get_fail.jpg}
+    \caption{Ανάκτηση κατοικιδίου όταν δεν υπάρχει ο δοσμένος κωδικός chip}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{img/add_success.jpg}
+    \caption{Καταχώρηση κατοικιδίου με έγκυρο κωδικό chip και στοιχεία}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{img/get_success.jpg}
+    \caption{Ανάκτηση κατοικιδίου όταν υπάρχει ο κωδικός chip}
+\end{figure}
 
 \end{document}
